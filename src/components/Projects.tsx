@@ -43,9 +43,8 @@ const projects: Project[] = [
       "/images/projects/artisanhub/product-display.jpg",
       "/images/projects/artisanhub/member-chat.jpg",
     ],
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Tailwind CSS"],
-    githubUrl: "https://github.com/yourusername/artisanhub",
-    liveUrl: "https://artisanhub-demo.com"
+    technologies: ["Laravel", "Javascript", "HTML5", "MySQL", "Stripe", "Bootstrap"],
+
   }
 ]
 
