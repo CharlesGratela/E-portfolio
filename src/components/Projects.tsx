@@ -45,6 +45,20 @@ const projects: Project[] = [
     ],
     technologies: ["Laravel", "Javascript", "HTML5", "MySQL", "Stripe", "Bootstrap"],
 
+  },
+   {
+    id: 3,
+    title: "PetAdoptPh",
+    description: "A basic crud project that was created using PHP, MySQL, vanilla JS CRUD app for managing pets (create, read, update, delete).",
+    images: [
+      "/images/projects/petadoptph/logo.jpg",
+      "/images/projects/petadoptph/index.jpg",
+      "/images/projects/petadoptph/add-pet.jpg",
+      "/images/projects/petadoptph/edit-pet.jpg",
+
+    ],
+    technologies: ["PHP, Javascript, MySQL, HTML5, CSS3"],
+
   }
 ]
 
