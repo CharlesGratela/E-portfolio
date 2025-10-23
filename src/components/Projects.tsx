@@ -54,7 +54,7 @@ const projects: Project[] = [
       "/images/projects/petadoptph/logo.jpg",
       "/images/projects/petadoptph/index.jpg",
       "/images/projects/petadoptph/add-pet.jpg",
-      "/images/projects/petadoptph/edit-pet.jpg",
+      "/images/projects/petadoptph/update-pet.jpg",
 
     ],
     technologies: ["PHP, Javascript, MySQL, HTML5, CSS3"],
