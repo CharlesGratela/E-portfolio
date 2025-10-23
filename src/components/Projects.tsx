@@ -66,7 +66,7 @@ function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-20 bg-white dark:bg-gray-800">
       <div className="max-w-6xl mx-auto px-5">
         <h2 className="section-title">My Projects</h2>
         <p className="section-subtitle">
@@ -75,17 +75,17 @@ function Projects() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {projects.map((project) => (
-            <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+            <div key={project.id} className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <div className="relative h-48 overflow-hidden group">
                 <img 
                   src={project.images[0]} 
                   alt={project.title}
-                  className="w-full h-full object-contain bg-gray-100 transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-contain bg-gray-100 dark:bg-gray-600 transition-transform duration-300 group-hover:scale-110"
                   onClick={() => setSelectedProject(project)}
                 />
                 <div className="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button 
-                    className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                    className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
                     onClick={() => setSelectedProject(project)}
                   >
                     View Gallery
@@ -93,16 +93,16 @@ function Projects() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">{project.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{project.description}</p>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-100">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (
-                    <span key={index} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">{tech}</span>
+                    <span key={index} className="bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium">{tech}</span>
                   ))}
                 </div>
                 <div className="flex gap-4">
                   {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors">
                       GitHub
                     </a>
                   )}
@@ -121,22 +121,22 @@ function Projects() {
       {/* Project Modal */}
       {selectedProject && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-5" onClick={() => setSelectedProject(null)}>
-          <div className="bg-white rounded-xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative" onClick={(e) => e.stopPropagation()}>
             <button 
-              className="absolute top-4 right-4 text-3xl text-gray-500 hover:text-gray-700 transition-colors"
+              className="absolute top-4 right-4 text-3xl text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
               onClick={() => setSelectedProject(null)}
             >
               ×
             </button>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">{selectedProject.title}</h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">{selectedProject.description}</p>
+            <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100">{selectedProject.title}</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{selectedProject.description}</p>
             <ImageCarousel 
               images={selectedProject.images} 
               projectName={selectedProject.title}
             />
             <div className="flex flex-wrap gap-2 mt-6">
               {selectedProject.technologies.map((tech, index) => (
-                <span key={index} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">{tech}</span>
+                <span key={index} className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium">{tech}</span>
               ))}
             </div>
           </div>

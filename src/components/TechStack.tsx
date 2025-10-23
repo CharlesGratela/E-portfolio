@@ -72,22 +72,22 @@ function TechStack() {
   const getLevelColor = (level: string) => {
     switch (level) {
       case "Proficient":
-        return "bg-green-100 text-green-800 border-green-200"
+        return "bg-green-100 text-green-800 border-green-200 dark:bg-green-900 dark:text-green-200 dark:border-green-700"
       case "Experienced":
-        return "bg-blue-100 text-blue-800 border-blue-200"
+        return "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700"
       case "Working Knowledge":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200"
+        return "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900 dark:text-yellow-200 dark:border-yellow-700"
       case "Skilled":
-        return "bg-purple-100 text-purple-800 border-purple-200"
+        return "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900 dark:text-purple-200 dark:border-purple-700"
       case "Knowledge":
-        return "bg-gray-100 text-gray-800 border-gray-200"
+        return "bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600"
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200"
+        return "bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600"
     }
   }
 
   return (
-    <section id="tech-stack" className="py-20 bg-gray-50">
+    <section id="tech-stack" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-5">
         <h2 className="section-title">Tech Stack</h2>
         <p className="section-subtitle">
@@ -96,8 +96,8 @@ function TechStack() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {techCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">
+            <div key={categoryIndex} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2">
                 {category.title}
               </h3>
               <div className="space-y-3">
@@ -107,7 +107,7 @@ function TechStack() {
                     <div key={skillIndex} className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <Icon className="text-2xl flex-shrink-0" style={{ color: skill.color }} />
-                        <span className="text-gray-700 font-medium">{skill.name}</span>
+                        <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
                       </div>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getLevelColor(skill.level)}`}>
                         {skill.level}
@@ -121,57 +121,57 @@ function TechStack() {
         </div>
 
         {/* Additional Skills Section */}
-        <div className="mt-16 bg-white rounded-xl shadow-lg p-8">
-          <h3 className="text-2xl font-semibold mb-6 text-gray-800 text-center">Additional Capabilities</h3>
+        <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+          <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100 text-center">Additional Capabilities</h3>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">System Analysis</h4>
-                  <p className="text-gray-600 text-sm">Capable of interpreting complex systems and debugging efficiently</p>
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-100">System Analysis</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Capable of interpreting complex systems and debugging efficiently</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Quick Learning</h4>
-                  <p className="text-gray-600 text-sm">Capable of quickly learning and adapting to new technologies</p>
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-100">Quick Learning</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Capable of quickly learning and adapting to new technologies</p>
                 </div>
               </div>
             </div>
             
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Collaboration</h4>
-                  <p className="text-gray-600 text-sm">Capable of collaborating and providing insights on system implementation</p>
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-100">Collaboration</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Capable of collaborating and providing insights on system implementation</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Responsive Design</h4>
-                  <p className="text-gray-600 text-sm">Skilled in creating responsive and modern web designs</p>
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-100">Responsive Design</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Skilled in creating responsive and modern web designs</p>
                 </div>
               </div>
             </div>

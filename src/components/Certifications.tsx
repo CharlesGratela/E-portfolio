@@ -22,7 +22,7 @@ function Certifications() {
   ]
 
   return (
-    <section id="certifications" className="py-20 bg-white">
+    <section id="certifications" className="py-20 bg-white dark:bg-gray-800">
       <div className="max-w-6xl mx-auto px-5">
         <h2 className="section-title">Certifications</h2>
         <p className="section-subtitle">
@@ -33,10 +33,10 @@ function Certifications() {
           {certifications.map((cert, index) => (
             <div 
               key={index}
-              className="bg-gray-50 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+              className="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
               onClick={() => setSelectedCert(index)}
             >
-              <div className="relative h-64 bg-gray-200 overflow-hidden">
+              <div className="relative h-64 bg-gray-200 dark:bg-gray-600 overflow-hidden">
                 <img 
                   src={cert.image} 
                   alt={cert.title}
@@ -44,9 +44,9 @@ function Certifications() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">{cert.title}</h3>
-                <p className="text-gray-600 mb-2">{cert.issuer}</p>
-                <p className="text-sm text-gray-500">{cert.date}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{cert.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-2">{cert.issuer}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{cert.date}</p>
               </div>
             </div>
           ))}
@@ -58,12 +58,12 @@ function Certifications() {
             className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
             onClick={() => setSelectedCert(null)}
           >
-            <div className="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden">
+            <div className="relative max-w-4xl w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
               <button 
                 onClick={() => setSelectedCert(null)}
-                className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors z-10"
+                className="absolute top-4 right-4 bg-white dark:bg-gray-700 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors z-10"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -73,11 +73,11 @@ function Certifications() {
                 className="w-full h-auto"
                 onClick={(e) => e.stopPropagation()}
               />
-              <div className="p-6 bg-white">
-                <h3 className="text-2xl font-bold mb-2">{certifications[selectedCert].title}</h3>
-                <p className="text-gray-600 mb-2">{certifications[selectedCert].issuer}</p>
-                <p className="text-sm text-gray-500 mb-4">{certifications[selectedCert].date}</p>
-                <p className="text-gray-700">{certifications[selectedCert].description}</p>
+              <div className="p-6 bg-white dark:bg-gray-800">
+                <h3 className="text-2xl font-bold mb-2 dark:text-gray-100">{certifications[selectedCert].title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-2">{certifications[selectedCert].issuer}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{certifications[selectedCert].date}</p>
+                <p className="text-gray-700 dark:text-gray-300">{certifications[selectedCert].description}</p>
               </div>
             </div>
           </div>
