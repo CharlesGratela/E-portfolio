@@ -12,6 +12,7 @@ import {
   SiPython,
   SiMysql,
   SiMongodb,
+  SiPostgresql,
   SiJson,
   SiSelenium
 } from 'react-icons/si'
@@ -52,6 +53,7 @@ function TechStack() {
       skills: [
         { name: "MySQL", level: "Proficient", icon: SiMysql, color: "#4479A1" },
         { name: "MongoDB", level: "Proficient", icon: SiMongodb, color: "#47A248" },
+        { name: "PostgreSQL", level: "Proficient", icon: SiPostgresql, color: "#4169E1" },
         { name: "JSON", level: "Proficient", icon: SiJson, color: "#000000" }
       ]
     },
