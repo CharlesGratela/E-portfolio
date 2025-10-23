@@ -119,7 +119,7 @@ function Contact() {
                   onChange={handleChange}
                   placeholder="Your Name" 
                   required 
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary-600 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-white rounded-lg focus:border-primary-600 focus:outline-none transition-colors"
                 />
               </div>
               <div>
@@ -130,7 +130,7 @@ function Contact() {
                   onChange={handleChange}
                   placeholder="Your Email" 
                   required 
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary-600 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-white rounded-lg focus:border-primary-600 focus:outline-none transition-colors"
                 />
               </div>
               <div>
@@ -141,7 +141,7 @@ function Contact() {
                   onChange={handleChange}
                   placeholder="Subject" 
                   required 
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary-600 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-white rounded-lg focus:border-primary-600 focus:outline-none transition-colors"
                 />
               </div>
               <div>
@@ -152,7 +152,7 @@ function Contact() {
                   placeholder="Your Message" 
                   rows={5} 
                   required 
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary-600 focus:outline-none transition-colors resize-vertical"
+                  className="w-full px-4 py-3 border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-white rounded-lg focus:border-primary-600 focus:outline-none transition-colors resize-vertical"
                 ></textarea>
               </div>
               <button type="submit" className="btn btn-primary w-full">Send Message</button>
