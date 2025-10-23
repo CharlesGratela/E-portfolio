@@ -13,6 +13,7 @@ function Header() {
           <a href="#home" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a>
           <a href="#tech-stack" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Tech Stack</a>
           <a href="#projects" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Projects</a>
+          <a href="#certifications" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Certifications</a>
           <a href="#contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
         </div>
         <div className="md:hidden flex flex-col cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
