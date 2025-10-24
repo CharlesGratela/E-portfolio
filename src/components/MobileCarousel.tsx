@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 interface MobileCarouselProps {
   children: React.ReactNode[]
@@ -7,16 +7,8 @@ interface MobileCarouselProps {
 
 function MobileCarousel({ children, className = '' }: MobileCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isTouch, setIsTouch] = useState(false)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
-
-  useEffect(() => {
-    const checkIfTouch = () => {
-      setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0)
-    }
-    checkIfTouch()
-  }, [])
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % children.length)
@@ -62,7 +54,7 @@ function MobileCarousel({ children, className = '' }: MobileCarouselProps) {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {children.map((child, index) => (
-              <div key={index} className="w-full flex-shrink-0 px-4">
+              <div key={index} className="w-full shrink-0 px-4">
                 {child}
               </div>
             ))}
