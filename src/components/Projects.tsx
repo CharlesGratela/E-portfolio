@@ -65,6 +65,27 @@ const projects: Project[] = [
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = (project: Project) => {
+    // Only open modal if it's a tap (not a swipe)
+    if (Math.abs(touchStart - touchEnd) < 10) {
+      setSelectedProject(project)
+    }
+  }
+
+  const handleClick = (project: Project) => {
+    setSelectedProject(project)
+  }
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-gray-800">
@@ -76,18 +97,25 @@ function Projects() {
         
         <MobileCarousel className="mt-12">
           {projects.map((project) => (
-            <div key={project.id} className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="relative h-48 overflow-hidden group">
+            <div 
+              key={project.id} 
+              className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={() => handleTouchEnd(project)}
+            >
+              <div 
+                className="relative h-48 overflow-hidden group cursor-pointer"
+                onClick={() => handleClick(project)}
+              >
                 <img 
                   src={project.images[0]} 
                   alt={project.title}
                   className="w-full h-full object-contain bg-gray-100 dark:bg-gray-600 transition-transform duration-300 group-hover:scale-110"
-                  onClick={() => setSelectedProject(project)}
                 />
                 <div className="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button 
                     className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
-                    onClick={() => setSelectedProject(project)}
                   >
                     View Gallery
                   </button>

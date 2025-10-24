@@ -9,6 +9,7 @@ function MobileCarousel({ children, className = '' }: MobileCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [isSwiping, setIsSwiping] = useState(false)
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % children.length)
@@ -24,19 +25,28 @@ function MobileCarousel({ children, className = '' }: MobileCarouselProps) {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX)
+    setTouchEnd(e.targetTouches[0].clientX)
+    setIsSwiping(false)
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX)
+    const distance = Math.abs(touchStart - e.targetTouches[0].clientX)
+    if (distance > 10) {
+      setIsSwiping(true)
+    }
   }
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 75) {
+    if (!isSwiping) return
+    
+    if (touchStart - touchEnd > 50) {
       goToNext()
     }
-    if (touchStart - touchEnd < -75) {
+    if (touchStart - touchEnd < -50) {
       goToPrev()
     }
+    setIsSwiping(false)
   }
 
   return (
@@ -54,8 +64,10 @@ function MobileCarousel({ children, className = '' }: MobileCarouselProps) {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {children.map((child, index) => (
-              <div key={index} className="w-full shrink-0 px-4">
-                {child}
+              <div key={index} className="w-full shrink-0 px-2 sm:px-4">
+                <div className="scale-95 sm:scale-100">
+                  {child}
+                </div>
               </div>
             ))}
           </div>
