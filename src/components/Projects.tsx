@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ImageCarousel from './ImageCarousel'
+import MobileCarousel from './MobileCarousel'
 
 interface Project {
   id: number
@@ -73,7 +74,7 @@ function Projects() {
           Here are some of my recent projects that showcase my skills and experience.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <MobileCarousel className="mt-12">
           {projects.map((project) => (
             <div key={project.id} className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <div className="relative h-48 overflow-hidden group">
@@ -115,7 +116,7 @@ function Projects() {
               </div>
             </div>
           ))}
-        </div>
+        </MobileCarousel>
       </div>
 
       {/* Project Modal */}

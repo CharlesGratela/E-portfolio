@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import MobileCarousel from './MobileCarousel'
 import { 
   SiLaravel, 
   SiExpress, 
@@ -14,14 +16,21 @@ import {
   SiMongodb,
   SiPostgresql,
   SiJson,
-  SiSelenium
+  SiSelenium,
+  SiGithub,
+  SiGitlab,
+  SiSourcetree,
+  SiGit
 } from 'react-icons/si'
 import { FaCode, FaSpider, FaServer, FaJava } from 'react-icons/fa'
 
 function TechStack() {
+  const [flippedIndex, setFlippedIndex] = useState<number | null>(null)
   const techCategories = [
     {
       title: "Backend Development",
+      icon: FaServer,
+      iconColor: "#0078D4",
       skills: [
         { name: "Laravel", level: "Proficient", icon: SiLaravel, color: "#FF2D20" },
         { name: "Express.js", level: "Working Knowledge", icon: SiExpress, color: "#000000" },
@@ -31,6 +40,8 @@ function TechStack() {
     },
     {
       title: "Frontend Development",
+      icon: SiReact,
+      iconColor: "#61DAFB",
       skills: [
         { name: "React", level: "Knowledge", icon: SiReact, color: "#61DAFB" },
         { name: "Vue.js", level: "Knowledge", icon: SiVuedotjs, color: "#4FC08D" },
@@ -42,6 +53,8 @@ function TechStack() {
     },
     {
       title: "Programming Languages",
+      icon: FaCode,
+      iconColor: "#007396",
       skills: [
         { name: "Java", level: "Knowledge", icon: FaJava, color: "#007396" },
         { name: "PHP", level: "Knowledge", icon: SiPhp, color: "#777BB4" },
@@ -50,6 +63,8 @@ function TechStack() {
     },
     {
       title: "Database Management",
+      icon: SiMysql,
+      iconColor: "#4479A1",
       skills: [
         { name: "MySQL", level: "Proficient", icon: SiMysql, color: "#4479A1" },
         { name: "MongoDB", level: "Proficient", icon: SiMongodb, color: "#47A248" },
@@ -59,12 +74,24 @@ function TechStack() {
     },
     {
       title: "Web Scraping & Tools",
+      icon: FaSpider,
+      iconColor: "#43B02A",
       skills: [
         { name: "Selenium", level: "Knowledge", icon: SiSelenium, color: "#43B02A" },
         { name: "BeautifulSoup", level: "Knowledge", icon: FaSpider, color: "#FF6B6B" },
         { name: "Scrapy", level: "Knowledge", icon: FaSpider, color: "#60A839" },
         { name: "Undetected-Chromedriver", level: "Knowledge", icon: FaCode, color: "#4285F4" },
         { name: "Requests", level: "Knowledge", icon: FaCode, color: "#2C8EBB" }
+      ]
+    },
+    {
+      title: "Version Control",
+      icon: SiGit,
+      iconColor: "#F05032",
+      skills: [
+        { name: "GitHub", level: "Proficient", icon: SiGithub, color: "#181717" },
+        { name: "GitLab", level: "Proficient", icon: SiGitlab, color: "#FC6D26" },
+        { name: "Sourcetree", level: "Proficient", icon: SiSourcetree, color: "#0052CC" }
       ]
     }
   ]
@@ -94,31 +121,57 @@ function TechStack() {
           Here are the technologies and tools I work with, organized by category.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <MobileCarousel className="mt-12">
           {techCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2">
-                {category.title}
-              </h3>
-              <div className="space-y-3">
-                {category.skills.map((skill, skillIndex) => {
-                  const Icon = skill.icon
-                  return (
-                    <div key={skillIndex} className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <Icon className="text-2xl flex-shrink-0" style={{ color: skill.color }} />
-                        <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
-                      </div>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getLevelColor(skill.level)}`}>
-                        {skill.level}
-                      </span>
-                    </div>
-                  )
-                })}
+            <div key={categoryIndex} className={`flip-card ${flippedIndex === categoryIndex ? 'flipped' : ''}`}>
+              <div className="flip-card-inner">
+                {/* Front */}
+                <div
+                  className="flip-card-front icon-center bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  onClick={() => setFlippedIndex(flippedIndex === categoryIndex ? null : categoryIndex)}
+                >
+                  {(() => {
+                    const CategoryIcon = category.icon
+                    return (
+                      <>
+                        <CategoryIcon className="w-16 h-16 mb-3" style={{ color: category.iconColor }} />
+                        <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+                          {category.title}
+                        </h3>
+                      </>
+                    )
+                  })()}
+                </div>
+
+                {/* Back */}
+                <div
+                  className="flip-card-back bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 cursor-pointer"
+                  onClick={() => setFlippedIndex(null)}
+                >
+                  <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2">
+                    {category.title} Details
+                  </h3>
+                  <div className="space-y-3">
+                    {category.skills.map((skill, skillIndex) => {
+                      const Icon = skill.icon
+                      return (
+                        <div key={skillIndex} className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <Icon className="text-2xl shrink-0" style={{ color: skill.color }} />
+                            <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
+                          </div>
+                          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getLevelColor(skill.level)}`}>
+                            {skill.level}
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           ))}
-        </div>
+        </MobileCarousel>
 
         {/* Additional Skills Section */}
         <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
@@ -126,7 +179,7 @@ function TechStack() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center shrink-0 mt-1">
                   <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -138,7 +191,7 @@ function TechStack() {
               </div>
               
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center shrink-0 mt-1">
                   <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -152,7 +205,7 @@ function TechStack() {
             
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center shrink-0 mt-1">
                   <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -164,7 +217,7 @@ function TechStack() {
               </div>
               
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center shrink-0 mt-1">
                   <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>

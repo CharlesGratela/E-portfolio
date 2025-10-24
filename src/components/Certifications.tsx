@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import MobileCarousel from './MobileCarousel'
 
 function Certifications() {
   const [selectedCert, setSelectedCert] = useState<number | null>(null)
@@ -29,7 +30,7 @@ function Certifications() {
           Professional certifications and achievements that validate my skills and expertise.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <MobileCarousel className="mt-12">
           {certifications.map((cert, index) => (
             <div 
               key={index}
@@ -50,7 +51,7 @@ function Certifications() {
               </div>
             </div>
           ))}
-        </div>
+        </MobileCarousel>
 
         {/* Modal for viewing certificate */}
         {selectedCert !== null && (

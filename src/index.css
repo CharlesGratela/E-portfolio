@@ -45,3 +45,57 @@ body {
 .section-subtitle {
   @apply text-lg text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto;
 }
+
+/* Flip card styles used by TechStack for a 3D flip effect */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: relative;
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* Prevent overlap and make back content scrollable when long */
+.flip-card {
+  position: relative; /* contain absolute back side */
+  overflow: visible; /* allow shadow effects */
+}
+.flip-card-inner {
+  min-height: 280px; /* ensure reasonable height so front/back match */
+  transform-style: preserve-3d;
+}
+.flip-card-front,
+.flip-card-back {
+  min-height: 280px; /* match inner height to prevent collapse */
+}
+.flip-card-back {
+  overflow: auto; /* allow scrolling when content is taller than card */
+  -webkit-overflow-scrolling: touch;
+  max-height: 400px; /* prevent excessive height */
+}
+.flip-card-front.icon-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
