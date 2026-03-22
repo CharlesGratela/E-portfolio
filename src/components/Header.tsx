@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useTheme } from '../contexts/ThemeContext'
+import { useTheme } from '../contexts/useTheme'
 
 const navItems = [
   { id: 'home', label: 'Home' },

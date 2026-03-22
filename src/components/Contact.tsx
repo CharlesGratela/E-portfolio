@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 
+const contactEmail = 'mcggratela@tip.edu.ph'
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -9,11 +11,13 @@ function Contact() {
     message: ''
   })
 
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'failed'>('idle')
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     
     // Create mailto link with form data
-    const mailtoLink = `mailto:mcggratela@tip.edu.ph?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`
     
@@ -36,6 +40,19 @@ function Contact() {
     })
   }
 
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contactEmail)
+      setCopyStatus('copied')
+    } catch {
+      setCopyStatus('failed')
+    }
+
+    window.setTimeout(() => {
+      setCopyStatus('idle')
+    }, 2500)
+  }
+
   return (
     <section id="contact" className="section-shell py-24">
       <div className="max-w-6xl mx-auto px-5">
@@ -55,6 +72,19 @@ function Contact() {
                 Whether you have a project in mind or just want to chat about 
                 technology, I'd love to hear from you!
               </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a href={`mailto:${contactEmail}`} className="btn btn-primary">
+                  Email Me Directly
+                </a>
+                <button type="button" onClick={handleCopyEmail} className="focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 font-semibold text-slate-700 hover:-translate-y-0.5 hover:border-sky-200 hover:text-sky-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-sky-800 dark:hover:text-sky-300">
+                  Copy Email
+                </button>
+              </div>
+              {copyStatus !== 'idle' && (
+                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
+                  {copyStatus === 'copied' ? 'Email copied to clipboard.' : `Could not copy automatically. Use ${contactEmail}.`}
+                </p>
+              )}
             </div>
             
             <div className="space-y-4">
@@ -100,7 +130,7 @@ function Contact() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
-                <span>mcggratela@tip.edu.ph</span>
+                <span>{contactEmail}</span>
               </div>
               
               <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">

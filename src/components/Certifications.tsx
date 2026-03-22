@@ -1,26 +1,11 @@
 import { useState } from 'react'
 import MobileCarousel from './MobileCarousel'
+import { certifications } from '../data/certifications'
+import { useModalBehavior } from '../hooks/useModalBehavior'
 
 function Certifications() {
   const [selectedCert, setSelectedCert] = useState<number | null>(null)
-
-  const certifications = [
-    {
-      title: "Data Engineer",
-      issuer: "Datacamp",
-      date: "June 26, 2025",
-      image: "/images/certifications/data-engineer.jpg",
-      description: "Data engineering certification covering data pipelines, ETL processes, and database management."
-    },
-    {
-      title: "Data Visualisation: Empowering Business with Effective Insights",
-      issuer: "Forage",
-      date: "March 18, 2025",
-      image: "/images/certifications/tata-certificate.jpg",
-      description: "Data visualisation certification focusing on transforming data into actionable insights for business decision-making."
-    },
-    // Add more certifications here
-  ]
+  useModalBehavior(selectedCert !== null, () => setSelectedCert(null))
 
   return (
     <section id="certifications" className="section-shell py-24">
@@ -65,7 +50,7 @@ function Certifications() {
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
             onClick={() => setSelectedCert(null)}
           >
-            <div className="surface-card relative max-w-4xl w-full overflow-hidden">
+            <div className="surface-card relative max-w-4xl w-full overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="certification-modal-title">
               <button 
                 onClick={() => setSelectedCert(null)}
                 className="focus-ring absolute right-4 top-4 z-10 rounded-full bg-white p-2 shadow-lg hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
@@ -82,7 +67,7 @@ function Certifications() {
                 onClick={(e) => e.stopPropagation()}
               />
               <div className="p-6 bg-white dark:bg-gray-800">
-                <h3 className="text-2xl font-bold mb-2 dark:text-gray-100">{certifications[selectedCert].title}</h3>
+                <h3 id="certification-modal-title" className="text-2xl font-bold mb-2 dark:text-gray-100">{certifications[selectedCert].title}</h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-2">{certifications[selectedCert].issuer}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{certifications[selectedCert].date}</p>
                 <p className="text-gray-700 dark:text-gray-300">{certifications[selectedCert].description}</p>
