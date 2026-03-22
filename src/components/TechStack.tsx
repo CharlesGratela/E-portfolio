@@ -114,12 +114,15 @@ function TechStack() {
   }
 
   return (
-    <section id="tech-stack" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="tech-stack" className="section-shell py-24">
       <div className="max-w-6xl mx-auto px-5">
-        <h2 className="section-title">Tech Stack</h2>
-        <p className="section-subtitle">
-          Here are the technologies and tools I work with, organized by category.
-        </p>
+        <div className="text-center">
+          <span className="section-kicker">Technical Toolkit</span>
+          <h2 className="section-title">Tech Stack</h2>
+          <p className="section-subtitle mt-4">
+            Here are the technologies and tools I work with, organized by category.
+          </p>
+        </div>
         
         <MobileCarousel className="mt-12">
           {techCategories.map((category, categoryIndex) => (
@@ -127,7 +130,7 @@ function TechStack() {
               <div className="flip-card-inner">
                 {/* Front */}
                 <div
-                  className="flip-card-front icon-center bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  className="flip-card-front icon-center surface-card p-6 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                   onClick={() => setFlippedIndex(flippedIndex === categoryIndex ? null : categoryIndex)}
                 >
                   {(() => {
@@ -145,7 +148,7 @@ function TechStack() {
 
                 {/* Back */}
                 <div
-                  className="flip-card-back bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 cursor-pointer"
+                  className="flip-card-back surface-card p-6 cursor-pointer"
                   onClick={() => setFlippedIndex(null)}
                 >
                   <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 border-b border-gray-200 dark:border-gray-700 pb-2">
@@ -174,7 +177,7 @@ function TechStack() {
         </MobileCarousel>
 
         {/* Additional Skills Section */}
-        <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+        <div className="surface-card mt-16 p-8">
           <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100 text-center">Additional Capabilities</h3>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">

@@ -23,18 +23,21 @@ function Certifications() {
   ]
 
   return (
-    <section id="certifications" className="py-20 bg-white dark:bg-gray-800">
+    <section id="certifications" className="section-shell py-24">
       <div className="max-w-6xl mx-auto px-5">
-        <h2 className="section-title">Certifications</h2>
-        <p className="section-subtitle">
-          Professional certifications and achievements that validate my skills and expertise.
-        </p>
+        <div className="text-center">
+          <span className="section-kicker">Credentials</span>
+          <h2 className="section-title">Certifications</h2>
+          <p className="section-subtitle mt-4">
+            Professional certifications and achievements that validate my skills and expertise.
+          </p>
+        </div>
 
         <MobileCarousel className="mt-12">
           {certifications.map((cert, index) => (
             <div 
               key={index}
-              className="bg-gray-50 dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+              className="surface-card overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               onClick={() => setSelectedCert(index)}
             >
               <div className="relative h-64 bg-gray-200 dark:bg-gray-600 overflow-hidden">
@@ -43,6 +46,9 @@ function Certifications() {
                   alt={cert.title}
                   className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                 />
+                <div className="absolute left-4 top-4 rounded-full bg-slate-950/75 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                  {cert.issuer}
+                </div>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{cert.title}</h3>
@@ -56,13 +62,14 @@ function Certifications() {
         {/* Modal for viewing certificate */}
         {selectedCert !== null && (
           <div 
-            className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
             onClick={() => setSelectedCert(null)}
           >
-            <div className="relative max-w-4xl w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+            <div className="surface-card relative max-w-4xl w-full overflow-hidden">
               <button 
                 onClick={() => setSelectedCert(null)}
-                className="absolute top-4 right-4 bg-white dark:bg-gray-700 rounded-full p-2 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors z-10"
+                className="focus-ring absolute right-4 top-4 z-10 rounded-full bg-white p-2 shadow-lg hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
+                aria-label="Close certification modal"
               >
                 <svg className="w-6 h-6 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

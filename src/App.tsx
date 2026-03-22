@@ -7,7 +7,7 @@ import Contact from './components/Contact'
 
 function App() {
   return (
-    <div>
+    <div className="relative overflow-x-hidden">
       <Header />
       <Hero />
       <TechStack />

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @variant dark (.dark &);
@@ -15,35 +15,106 @@
   --color-primary-800: #1e40af;
   --color-primary-900: #1e3a8a;
   
-  --font-family-sans: 'Inter', system-ui, sans-serif;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --font-family-sans: 'Manrope', system-ui, sans-serif;
+  --font-family-display: 'Sora', 'Manrope', system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Manrope', system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 30%),
+    linear-gradient(180deg, #f8fbff 0%, #f6f7fb 50%, #f3f4f6 100%);
+  color: #111827;
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 25%),
+    linear-gradient(180deg, #020617 0%, #0f172a 55%, #111827 100%);
+  color: #f3f4f6;
+}
+
+::selection {
+  background: rgba(14, 165, 233, 0.24);
+}
+
+a,
+button,
+input,
+textarea {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 dark:focus-visible:ring-sky-400 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950;
 }
 
 .btn {
-  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 inline-block;
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition-all duration-300;
 }
 
 .btn-primary {
-  @apply bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5;
+  @apply bg-sky-600 text-white shadow-lg shadow-sky-600/20 hover:bg-sky-700 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 dark:bg-sky-500 dark:shadow-sky-500/20 dark:hover:bg-sky-400 dark:focus-visible:ring-sky-400 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950;
 }
 
 .btn-secondary {
-  @apply bg-transparent text-white border-2 border-white hover:bg-white hover:text-blue-600 hover:-translate-y-0.5;
+  @apply border border-white/40 bg-white/10 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:bg-white hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 dark:border-white/20 dark:hover:text-slate-900 dark:focus-visible:ring-sky-400 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950;
 }
 
 .section-title {
-  @apply text-4xl font-bold text-center mb-4 text-gray-800 dark:text-gray-100;
+  font-family: 'Sora', 'Manrope', system-ui, sans-serif;
+  @apply text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50 md:text-5xl;
 }
 
 .section-subtitle {
-  @apply text-lg text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto;
+  @apply mx-auto max-w-3xl text-lg leading-relaxed text-slate-600 dark:text-slate-300;
+}
+
+.section-kicker {
+  font-family: 'Sora', 'Manrope', system-ui, sans-serif;
+  @apply mb-4 inline-flex items-center rounded-full border border-sky-200/70 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700 shadow-sm backdrop-blur dark:border-sky-900/80 dark:bg-slate-900/70 dark:text-sky-300;
+}
+
+.section-shell {
+  @apply relative overflow-hidden;
+}
+
+.section-shell::before {
+  content: "";
+  position: absolute;
+  inset: 2rem auto auto 50%;
+  width: min(90vw, 64rem);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.35), transparent);
+}
+
+.surface-card {
+  @apply rounded-[28px] border border-white/60 bg-white/85 shadow-xl shadow-slate-900/5 backdrop-blur dark:border-slate-800/80 dark:bg-slate-900/80 dark:shadow-black/20;
+}
+
+.nav-link {
+  @apply rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 dark:text-slate-300 dark:hover:text-sky-300 dark:focus-visible:ring-sky-400 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950;
+}
+
+.nav-link-active {
+  @apply bg-sky-100 text-sky-700 shadow-sm dark:bg-sky-950/60 dark:text-sky-300;
+}
+
+.stat-chip {
+  @apply rounded-2xl border border-white/20 bg-white/12 px-4 py-3 text-left shadow-lg shadow-slate-950/10 backdrop-blur-sm dark:border-white/10 dark:bg-white/5;
 }
 
 /* Flip card styles used by TechStack for a 3D flip effect */
