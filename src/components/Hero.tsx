@@ -65,12 +65,22 @@ function Hero() {
                   <span className="font-semibold tracking-[0.2em] text-sky-200 uppercase">Charles Gratela</span>
                   <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-semibold text-emerald-300">Available for opportunities</span>
                 </div>
-                <div className="overflow-hidden rounded-[20px] border border-white/10 bg-slate-900">
+                <div className="relative overflow-hidden rounded-[20px] border border-white/10 bg-slate-900">
+                  <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(2,6,23,0)_35%,rgba(2,6,23,0.72)_100%)]" />
                   <img
                     src="/images/projects/image.jpg"
                     alt="Charles Gratela"
-                    className="h-[26rem] w-full object-cover"
+                    className="h-[26rem] w-full object-cover scale-[1.02]"
                   />
+                  <div className="absolute inset-x-4 bottom-4 z-20 flex items-end justify-between gap-4">
+                    <div>
+                      <div className="text-xs uppercase tracking-[0.24em] text-sky-200">Profile Snapshot</div>
+                      <div className="mt-1 text-lg font-semibold text-white">Practical builder with backend depth</div>
+                    </div>
+                    <div className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+                      Manila
+                    </div>
+                  </div>
                 </div>
                 <div className="mt-3 grid grid-cols-2 gap-3">
                   <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
@@ -80,6 +90,12 @@ function Hero() {
                   <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <div className="text-xs uppercase tracking-[0.22em] text-slate-400">Style</div>
                     <div className="mt-1 font-semibold text-white">Clear and mobile-first</div>
+                  </div>
+                </div>
+                <div className="mt-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <div className="text-xs uppercase tracking-[0.22em] text-slate-400">Brand Direction</div>
+                  <div className="mt-1 text-sm leading-6 text-slate-200">
+                    Product-minded interfaces with grounded implementation and calm visual clarity.
                   </div>
                 </div>
               </div>

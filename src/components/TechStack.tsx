@@ -15,6 +15,7 @@ import {
   SiMysql,
   SiMongodb,
   SiPostgresql,
+  SiSupabase,
   SiJson,
   SiSelenium,
   SiGithub,
@@ -35,6 +36,7 @@ function TechStack() {
         { name: "Laravel", level: "Proficient", icon: SiLaravel, color: "#FF2D20" },
         { name: "Express.js", level: "Working Knowledge", icon: SiExpress, color: "#000000" },
         { name: "Node.js", level: "Working Knowledge", icon: SiNodedotjs, color: "#339933" },
+        { name: "Supabase", level: "Working Knowledge", icon: SiSupabase, color: "#3ECF8E" },
         { name: "RESTful APIs", level: "Experienced", icon: FaServer, color: "#0078D4" }
       ]
     },
@@ -69,6 +71,7 @@ function TechStack() {
         { name: "MySQL", level: "Proficient", icon: SiMysql, color: "#4479A1" },
         { name: "MongoDB", level: "Proficient", icon: SiMongodb, color: "#47A248" },
         { name: "PostgreSQL", level: "Proficient", icon: SiPostgresql, color: "#4169E1" },
+        { name: "Supabase Database", level: "Working Knowledge", icon: SiSupabase, color: "#3ECF8E" },
         { name: "JSON", level: "Proficient", icon: SiJson, color: "#000000" }
       ]
     },
