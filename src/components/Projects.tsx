@@ -65,16 +65,17 @@ function Projects() {
                   />
                 )}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent" />
+                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-950/55 via-slate-950/25 to-transparent" />
 
                 <div className="absolute left-4 top-4 flex flex-wrap gap-2">
                   {project.demoVideoLabel && (
-                    <span className="rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-white">
+                    <span className="rounded-full border border-white/15 bg-slate-950/70 px-3 py-1 text-xs font-medium text-white shadow-lg shadow-slate-950/30 backdrop-blur-sm">
                       {project.demoVideoLabel}
                     </span>
                   )}
                   {project.tag && (
-                    <span className="rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                    <span className="rounded-full border border-white/15 bg-slate-950/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-slate-950/30 backdrop-blur-sm">
                       {project.tag}
                     </span>
                   )}
