@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 
-const contactEmail = 'mcggratela@tip.edu.ph'
+const contactEmail = 'charlesgratela247@gmail.com';
 
 function Contact() {
   const [formData, setFormData] = useState({
